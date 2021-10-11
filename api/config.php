@@ -8,6 +8,7 @@
     $password = "Fdm^;bog-91";
     $database = "gtw";
   
+    // $conn = mysqli_connect('27.254.191.157', 'gotowin', 'Fdm^;bog-91','gtw'); 
     $conn = mysqli_connect($server, $username, $password,$database); 
   
 

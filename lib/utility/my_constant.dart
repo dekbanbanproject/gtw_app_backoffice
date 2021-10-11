@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MyConstant {
   static String appName = 'GTW-BACKOffice';
-  static String domain = 'http://27.254.191.157/gtw/';
+  static String domain = 'https://b700-1-46-141-146.ngrok.io';
   static String routeHome = '/home';
   static String routeAuthen = '/authen';
   static String routeUserPage = '/UserPage';
@@ -85,6 +85,9 @@ class MyConstant {
 
   TextStyle h2info() =>
       TextStyle(fontSize: 17, color: info, fontWeight: FontWeight.bold);
+
+  TextStyle h2dan() =>
+      TextStyle(fontSize: 17, color: danger, fontWeight: FontWeight.bold);
   
   TextStyle h3dark() =>
       TextStyle(fontSize: 14, color: dark, fontWeight: FontWeight.bold);
@@ -98,4 +101,7 @@ class MyConstant {
           borderRadius: BorderRadius.circular(30),
         ),
       );
+
+
+  // Mydialog()
 }
