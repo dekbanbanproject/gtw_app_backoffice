@@ -1,9 +1,13 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:gtw/models/infousers_model.dart';
 import 'package:gtw/utility/my_constant.dart';
 import 'package:gtw/utility/my_dialog.dart';
 import 'package:gtw/widgets/show_image.dart';
 import 'package:gtw/widgets/show_title.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Authen extends StatefulWidget {
   const Authen({Key? key}) : super(key: key);
@@ -87,12 +91,54 @@ class _AuthenState extends State<Authen> {
   Future<Null> checkAuthen({String? username, String? password}) async {
     String apiCheckAuthen =
         '${MyConstant.domain}/gtw/api/signin.php?isAdd=true&username=$username&password=$password';
-    await Dio().get(apiCheckAuthen).then((value) {
+    await Dio().get(apiCheckAuthen).then((value)async {
       print('## value for API ===> $value');
       if (value.toString() == 'null') {
         MyDialog().normalDialog(
-            context, 'Username Fail', 'No');
-      } else {}
+            context, 'ไม่มี $username ในฐานข้อมูล', 'Username ผิด');
+      } else {
+        for (var item in json.decode(value.data)) {
+
+          Infousers_model model = Infousers_model.fromMap(item);
+
+          if (password == model.password) {
+            String type = model.type;  
+            print('## value for API ===> $type');
+           
+            SharedPreferences preferences =
+                await SharedPreferences.getInstance();
+            preferences.setString('type', type);
+            preferences.setString('fullname', model.fullname);
+            preferences.setString('personid', model.personid);
+            preferences.setString('positionid', model.positionid);
+            preferences.setString('depsubsubid', model.depsubsubid);
+
+            switch (type) {
+              case 'US':
+                Navigator.pushNamedAndRemoveUntil(
+                    context, MyConstant.routeUserPage, (route) => false);
+                break;
+              case 'PO':
+                Navigator.pushNamedAndRemoveUntil(
+                    context, MyConstant.routePoPage, (route) => false);
+                break;
+              case 'HN':
+                Navigator.pushNamedAndRemoveUntil(
+                    context, MyConstant.routeHnPage, (route) => false);
+                break;
+              case 'AD':
+                Navigator.pushNamedAndRemoveUntil(
+                    context, MyConstant.routeAdminPage, (route) => false);
+                break;
+
+              default:
+            }
+          } else {
+            // Authen False
+            MyDialog().normalDialog(context, 'กรุณาลองใหม่', 'รหัสผ่านผิด ?');
+          }
+        }
+      }
     });
   }
 

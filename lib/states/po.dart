@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:gtw/utility/my_constant.dart';
+import 'package:gtw/widgets/show_signout.dart';
+import 'package:gtw/widgets/show_title.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class PoPage extends StatefulWidget {
   const PoPage({ Key? key }) : super(key: key);
@@ -10,8 +14,15 @@ class PoPage extends StatefulWidget {
 class _PoPageState extends State<PoPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+     return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.green.shade400,
+        title: Text('ผู้อำนวยการ'),
+      ),
+      drawer: Drawer(
+        child: ShowSignOut(),
+      ),
     );
   }
+
+ 
 }

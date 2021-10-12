@@ -5,19 +5,21 @@ import 'package:gtw/widgets/show_title.dart';
 
 
 class MyDialog{
-  Future<Null> normalDialog(BuildContext context, String message, String s) async {
+  // get title => null;
+
+  Future<Null> normalDialog(BuildContext context, String message, String title) async {
   showDialog(
     context: context,
     builder: (context) => SimpleDialog(
       title: ListTile(
         leading: ShowImage(path: MyConstant.img2),
-        title: ShowTitle(title: 'title', textStyle: MyConstant().h2dan()),
-        subtitle: ShowTitle(title: 'title', textStyle: MyConstant().h3dark()),
+        title: ShowTitle(title: title, textStyle: MyConstant().h2dan()),
+        subtitle: ShowTitle(title: message, textStyle: MyConstant().h3dark()),
       ),
       children: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text('OK'),
+          child: Text('OK')
         )
       ],
     ),

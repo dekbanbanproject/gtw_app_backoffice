@@ -12,6 +12,7 @@ class UserSModel {
   late String personid;
   late String createdat;
   late String updatedat;
+  late String type;
   UserSModel({
     required this.id,
     required this.name,
@@ -24,6 +25,7 @@ class UserSModel {
     required this.remembertoken,
     required this.createdat,
     required this.updatedat,
+    required this.type,
   });
 
   UserSModel copyWith({
@@ -38,6 +40,7 @@ class UserSModel {
     String? remembertoken,
     String? createdat,
     String? updatedat,
+    String? type,
   }) {
     return UserSModel(
       id: id ?? this.id,
@@ -51,6 +54,7 @@ class UserSModel {
       remembertoken: remembertoken ?? this.remembertoken,
       createdat: createdat ?? this.createdat,
       updatedat: updatedat ?? this.updatedat,
+      type: type ?? this.type,
     );
   }
 
@@ -67,6 +71,7 @@ class UserSModel {
       'remembertoken': remembertoken,
       'createdat': createdat,
       'updatedat': updatedat,
+      'type': type,
     };
   }
 
@@ -83,6 +88,7 @@ class UserSModel {
       remembertoken : map['remember_token'],
       createdat : map['created_at'],
       updatedat : map['updated_at'],
+      type : map['type'],
     );
   }
 
@@ -93,7 +99,7 @@ class UserSModel {
 
   @override
   String toString() =>
-      'UserModel(id: $id, name: $name, username: $username, password: $password, email: $email, status: $status,personid:$personid,emailverifiedat:$emailverifiedat,remembertoken:$remembertoken,createdat:$createdat,updatedat:$updatedat,)';
+      'UserModel(id: $id, name: $name, username: $username, password: $password, email: $email, status: $status,personid:$personid,emailverifiedat:$emailverifiedat,remembertoken:$remembertoken,createdat:$createdat,updatedat:$updatedat,type:$type)';
 
   @override
   bool operator ==(Object other) {
@@ -110,9 +116,10 @@ class UserSModel {
         other.emailverifiedat == emailverifiedat &&
         other.remembertoken == remembertoken &&
         other.createdat == createdat &&
-        other.updatedat == updatedat;      
+        other.updatedat == updatedat && 
+        other.type == type;     
   }
 
   @override
-  int get hashCode => id.hashCode ^ name.hashCode ^ username.hashCode ^ password.hashCode ^ email.hashCode ^ status.hashCode ^ personid.hashCode ^ emailverifiedat.hashCode ^ remembertoken.hashCode ^ createdat.hashCode ^ updatedat.hashCode;
+  int get hashCode => id.hashCode ^ name.hashCode ^ username.hashCode ^ password.hashCode ^ email.hashCode ^ status.hashCode ^ personid.hashCode ^ emailverifiedat.hashCode ^ remembertoken.hashCode ^ createdat.hashCode ^ updatedat.hashCode ^ type.hashCode ;
 }

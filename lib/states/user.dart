@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:gtw/states/signout.dart';
+import 'package:gtw/utility/my_constant.dart';
+import 'package:gtw/widgets/show_signout.dart';
+import 'package:gtw/widgets/show_title.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class UserPage extends StatefulWidget {
-  const UserPage({ Key? key }) : super(key: key);
+  const UserPage({Key? key}) : super(key: key);
 
   @override
   _UserPageState createState() => _UserPageState();
@@ -10,8 +15,15 @@ class UserPage extends StatefulWidget {
 class _UserPageState extends State<UserPage> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      
+    return Scaffold(
+      appBar: AppBar(backgroundColor: Colors.blue.shade400,
+        title: Text('ผู้ใช้งานทั่วไป'),      
+      ),
+     drawer: Drawer(
+        child: ShowSignOut(),
+      ),
     );
   }
+
+ 
 }
