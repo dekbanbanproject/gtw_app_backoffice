@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MyConstant {
   static String appName = 'GTW-BACKOffice';
-  static String domain = 'https://d6e5-1-47-2-232.ngrok.io';
+  static String domain = 'https://46e8-2403-6200-8830-116-212a-ba6f-5f05-9dbd.ngrok.io';
   static String routeHome = '/home';
   static String routeAuthen = '/authen';
   static String routeUserPage = '/user';
@@ -11,51 +11,22 @@ class MyConstant {
   static String routePoPage = '/po';
   static String routeAdminPage = '/ad';
   static String routeResetPage = '/reset';
+  static String routeGleavePage = '/gleave';
 
   static List<String> menus = [
-    'ประชาสัมพันธ์',
-    'ข้อมูลบุคคล',
-    'ลงเวลาปฎิบัติงาน',
-    'ข้อมูลสุขภาพ',
-    'ข้อมูลการลา',
-    'ประชุม/อบรม/ดูงาน',
-    'เงินเดือนค่าตอบแทน',
-    'สวัสดิการบ้านพัก',
-    'แผนงานโครงการ',
-    'งานสารบรรณ',
-    'งานบริการห้องประชุม',
-    'งานบริการยานพาหนะ',
-    'งานบริหารทรัพย์สิน',
-    'งานพัสดุ',
-    'คลังวัสดุ',
-    'งานแจ้งซ่อมบำรุง',
-    'ตารางเวรปฎิบัติงาน',
-    'ตารางจัดโอที',
-    'งานซักฟอก',
-    'งานจ่ายกลาง',
+    'หนังสือราชการ',
+    'เห็นชอบการลา',
+    'เห็นชอบประชุม/อบรม/ดูงาน',
+    'เห็นชอบจัดซื้อจัดจ้าง',
+    'เห็นชอบคลังวัสดุ',   
   ];
 
   static List<Color> colors = [
     Colors.blue.shade200,
+    Colors.pink.shade200,
     Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
-    Colors.blue.shade200,
+    Colors.purple.shade200,
+    Colors.blue.shade200,   
   ];
 
   static List<Image> image = [
@@ -97,8 +68,12 @@ class MyConstant {
   TextStyle h2dan() =>
       TextStyle(fontSize: 17, color: danger, fontWeight: FontWeight.bold);
 
-  TextStyle h2dark() =>
+  TextStyle h22dark() =>
       TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
+
+  TextStyle h2dark() =>
+      TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
+
   
   TextStyle h3dark() =>
       TextStyle(fontSize: 14, color: dark, fontWeight: FontWeight.bold);
@@ -117,5 +92,20 @@ class MyConstant {
       );
 
 
+  BoxDecoration myBoxDecoration(String namePic) {
+    return BoxDecoration(
+      image: DecorationImage(
+        image: AssetImage('images/$namePic'),
+        fit: BoxFit.cover,
+      ),
+    );
+  }
+
+Container showlogo2() {
+    return Container(
+      width: 160.0,
+      child: Image.asset('images/logo.png'),
+    );
+  }
   // Mydialog()
 }
