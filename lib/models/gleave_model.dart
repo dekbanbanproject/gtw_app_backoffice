@@ -8,6 +8,11 @@ class GleaveModel {
   final String LEAVE_DATE_END;
   final String LEAVE_PERSON_FULLNAME;
   final String LEADER_PERSON_ID;
+  final String LEAVE_WORK_SEND_ID;
+  final String LEAVE_WORK_SEND;
+  final String LEAVE_TYPE_NAME;
+  final String LEAVE_STATUS_CODE;
+  final String LOCATION_NAME;
   GleaveModel({
     required this.ID,
     required this.LEAVE_YEAR_ID,
@@ -16,6 +21,11 @@ class GleaveModel {
     required this.LEAVE_DATE_END,
     required this.LEAVE_PERSON_FULLNAME,
     required this.LEADER_PERSON_ID,
+    required this.LEAVE_WORK_SEND_ID,
+    required this.LEAVE_WORK_SEND,
+    required this.LEAVE_TYPE_NAME,
+    required this.LEAVE_STATUS_CODE,
+    required this.LOCATION_NAME,
   });
 
   GleaveModel copyWith({
@@ -26,6 +36,11 @@ class GleaveModel {
     String? LEAVE_DATE_END,
     String? LEAVE_PERSON_FULLNAME,
     String? LEADER_PERSON_ID,
+    String? LEAVE_WORK_SEND_ID,
+    String? LEAVE_WORK_SEND,
+    String? LEAVE_TYPE_NAME,
+    String? LEAVE_STATUS_CODE,
+    String? LOCATION_NAME,
   }) {
     return GleaveModel(
       ID: ID ?? this.ID,
@@ -36,6 +51,11 @@ class GleaveModel {
       LEAVE_PERSON_FULLNAME:
           LEAVE_PERSON_FULLNAME ?? this.LEAVE_PERSON_FULLNAME,
       LEADER_PERSON_ID: LEADER_PERSON_ID ?? this.LEADER_PERSON_ID,
+      LEAVE_WORK_SEND_ID: LEAVE_WORK_SEND_ID ?? this.LEAVE_WORK_SEND_ID,
+      LEAVE_WORK_SEND: LEAVE_WORK_SEND ?? this.LEAVE_WORK_SEND,
+      LEAVE_TYPE_NAME: LEAVE_TYPE_NAME ?? this.LEAVE_TYPE_NAME,
+      LEAVE_STATUS_CODE: LEAVE_STATUS_CODE ?? this.LEAVE_STATUS_CODE,
+      LOCATION_NAME: LOCATION_NAME ?? this.LOCATION_NAME,
     );
   }
 
@@ -48,6 +68,11 @@ class GleaveModel {
       'LEAVE_DATE_END': LEAVE_DATE_END,
       'LEAVE_PERSON_FULLNAME': LEAVE_PERSON_FULLNAME,
       'LEADER_PERSON_ID': LEADER_PERSON_ID,
+      'LEAVE_WORK_SEND_ID': LEAVE_WORK_SEND_ID,
+      'LEAVE_WORK_SEND': LEAVE_WORK_SEND,
+      'LEAVE_TYPE_NAME': LEAVE_TYPE_NAME,
+      'LEAVE_STATUS_CODE': LEAVE_STATUS_CODE,
+      'LOCATION_NAME': LOCATION_NAME,
     };
   }
 
@@ -56,14 +81,15 @@ class GleaveModel {
       ID: map['ID'] == null ? '' : map['ID'],
       LEAVE_YEAR_ID: map['LEAVE_YEAR_ID'] == null ? '' : map['LEAVE_YEAR_ID'],
       LEAVE_BECAUSE: map['LEAVE_BECAUSE'] == null ? '' : map['LEAVE_BECAUSE'],
-      LEAVE_DATE_BEGIN:
-          map['LEAVE_DATE_BEGIN'] == null ? '' : map['LEAVE_DATE_BEGIN'],
-      LEAVE_DATE_END:
-          map['LEAVE_DATE_END'] == null ? '' : map['LEAVE_DATE_END'],
-      LEAVE_PERSON_FULLNAME: map['LEAVE_PERSON_FULLNAME'] == null
-          ? ''
-          : map['LEAVE_PERSON_FULLNAME'],
+      LEAVE_DATE_BEGIN: map['LEAVE_DATE_BEGIN'] == null ? '' : map['LEAVE_DATE_BEGIN'],
+      LEAVE_DATE_END: map['LEAVE_DATE_END'] == null ? '' : map['LEAVE_DATE_END'],
+      LEAVE_PERSON_FULLNAME: map['LEAVE_PERSON_FULLNAME'] == null ? '' : map['LEAVE_PERSON_FULLNAME'],
       LEADER_PERSON_ID: map['LEADER_PERSON_ID'] == null ? '' : map['LEADER_PERSON_ID'],
+      LEAVE_WORK_SEND_ID: map['LEAVE_WORK_SEND_ID'] == null ? '' : map['LEAVE_WORK_SEND_ID'],
+      LEAVE_WORK_SEND: map['LEAVE_WORK_SEND'] == null ? '' : map['LEAVE_WORK_SEND'],
+      LEAVE_TYPE_NAME: map['LEAVE_TYPE_NAME'] == null ? '' : map['LEAVE_TYPE_NAME'],
+      LEAVE_STATUS_CODE: map['LEAVE_STATUS_CODE'] == null ? '' : map['LEAVE_STATUS_CODE'],
+      LOCATION_NAME: map['LOCATION_NAME'] == null ? '' : map['LOCATION_NAME'],
     );
   }
 
@@ -74,7 +100,7 @@ class GleaveModel {
 
   @override
   String toString() {
-    return 'GleaveModel(ID:$ID,LEAVE_YEAR_ID: $LEAVE_YEAR_ID, LEAVE_BECAUSE: $LEAVE_BECAUSE, LEAVE_DATE_BEGIN: $LEAVE_DATE_BEGIN, LEAVE_DATE_END: $LEAVE_DATE_END,LEAVE_PERSON_FULLNAME:$LEAVE_PERSON_FULLNAME,LEADER_PERSON_ID:$LEADER_PERSON_ID,)';
+    return 'GleaveModel(ID:$ID,LEAVE_YEAR_ID: $LEAVE_YEAR_ID, LEAVE_BECAUSE: $LEAVE_BECAUSE, LEAVE_DATE_BEGIN: $LEAVE_DATE_BEGIN, LEAVE_DATE_END: $LEAVE_DATE_END,LEAVE_PERSON_FULLNAME:$LEAVE_PERSON_FULLNAME,LEADER_PERSON_ID:$LEADER_PERSON_ID,LEAVE_WORK_SEND_ID:$LEAVE_WORK_SEND_ID,LEAVE_WORK_SEND:$LEAVE_WORK_SEND,LEAVE_TYPE_NAME:$LEAVE_TYPE_NAME,LEAVE_STATUS_CODE:$LEAVE_STATUS_CODE,LOCATION_NAME:$LOCATION_NAME)';
   }
 
   @override
@@ -88,7 +114,12 @@ class GleaveModel {
         other.LEAVE_DATE_BEGIN == LEAVE_DATE_BEGIN &&
         other.LEAVE_DATE_END == LEAVE_DATE_END &&
         other.LEAVE_PERSON_FULLNAME == LEAVE_PERSON_FULLNAME &&
-        other.LEADER_PERSON_ID == LEADER_PERSON_ID;
+        other.LEADER_PERSON_ID == LEADER_PERSON_ID &&
+        other.LEAVE_WORK_SEND_ID == LEAVE_WORK_SEND_ID &&
+        other.LEAVE_WORK_SEND == LEAVE_WORK_SEND &&
+        other.LEAVE_TYPE_NAME == LEAVE_TYPE_NAME &&
+        other.LEAVE_STATUS_CODE == LEAVE_STATUS_CODE &&
+        other.LOCATION_NAME == LOCATION_NAME;
   }
 
   @override
@@ -99,6 +130,11 @@ class GleaveModel {
         LEAVE_DATE_BEGIN.hashCode ^
         LEAVE_DATE_END.hashCode ^
         LEAVE_PERSON_FULLNAME.hashCode ^
-        LEADER_PERSON_ID.hashCode;
+        LEADER_PERSON_ID.hashCode ^
+        LEAVE_WORK_SEND_ID.hashCode ^
+        LEAVE_WORK_SEND.hashCode ^
+        LEAVE_TYPE_NAME.hashCode ^
+        LEAVE_STATUS_CODE.hashCode ^
+        LOCATION_NAME.hashCode;
   }
 }

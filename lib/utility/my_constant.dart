@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MyConstant {
   static String appName = 'GTW-BACKOffice';
-  static String domain = 'https://b21b-2403-6200-8830-116-812e-8001-8d5b-4cf5.ngrok.io';
+  static String domain = 'https://a932-2403-6200-8830-116-8e-692d-381d-e3c4.ngrok.io';
   static String routeHome = '/home';
   static String routeAuthen = '/authen';
   static String routeUserPage = '/user';
@@ -69,15 +69,18 @@ class MyConstant {
   TextStyle h2dan() =>
       TextStyle(fontSize: 17, color: danger, fontWeight: FontWeight.bold);
 
+
+
   TextStyle h22dark() =>
       TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
 
   TextStyle h2dark() =>
+      TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);  
+  TextStyle h3dark() =>
+      TextStyle(fontSize: 17, color: dark, fontWeight: FontWeight.bold);
+  TextStyle h4dark() =>
       TextStyle(fontSize: 15, color: dark, fontWeight: FontWeight.bold);
 
-  
-  TextStyle h3dark() =>
-      TextStyle(fontSize: 14, color: dark, fontWeight: FontWeight.bold);
 
   TextStyle h3() =>
       TextStyle(fontSize: 14, color: primary, fontWeight: FontWeight.bold);
@@ -85,8 +88,18 @@ class MyConstant {
   TextStyle h3white() =>
       TextStyle(fontSize: 14, color: white, fontWeight: FontWeight.bold);
 
+
+
   TextStyle h1back() =>
       TextStyle(fontSize: 24, color: back, fontWeight: FontWeight.bold);
+  TextStyle h2back() =>
+      TextStyle(fontSize: 20, color: back, fontWeight: FontWeight.bold);
+ TextStyle h3back() =>
+      TextStyle(fontSize: 17, color: back, fontWeight: FontWeight.bold);
+
+
+
+
   TextStyle h1whit24() =>
       TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
   TextStyle h1whit20() =>

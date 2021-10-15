@@ -132,14 +132,14 @@ class _DevbookHnState extends State<DevbookHn> {
             child: ListTile(
               leading: Text(
                 searchbookIndexModels[index].BOOK_NUMBER,
-                style: MyConstant().h3dark(),
+                style: MyConstant().h4dark(),
               ),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
                     searchbookIndexModels[index].BOOK_DATE,
-                    style: MyConstant().h3dark(),
+                    style: MyConstant().h4dark(),
                   ),
                 ],
               ),

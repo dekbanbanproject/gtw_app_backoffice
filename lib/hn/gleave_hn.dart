@@ -29,6 +29,7 @@ class _GleaveHnState extends State<GleaveHn> {
   void initState() {
     super.initState();
     readdatagleave();
+    
   }
 
   Future<Null> readdatagleave() async {
@@ -131,14 +132,14 @@ class _GleaveHnState extends State<GleaveHn> {
             child: ListTile(
               leading: Text(
                 searchgleavemodels[index].LEAVE_PERSON_FULLNAME,
-                style: MyConstant().h3dark(),
+                style: MyConstant().h4dark(),
               ),
               title: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Text(
                     searchgleavemodels[index].LEAVE_DATE_BEGIN,
-                    style: MyConstant().h3dark(),
+                    style: MyConstant().h4dark(),
                   ),
                 ],
               ),

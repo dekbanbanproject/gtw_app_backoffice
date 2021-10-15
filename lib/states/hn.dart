@@ -50,7 +50,7 @@ class _HnPageState extends State<HnPage> {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               // Text('หัวหน้า'),
-              Text('Ver.641010',style: MyConstant().h1whit17(),),
+              Text('Ver.641015',style: MyConstant().h1whit17(),),
             ],
           ),
         ),
