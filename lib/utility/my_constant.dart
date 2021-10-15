@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class MyConstant {
   static String appName = 'GTW-BACKOffice';
-  static String domain = 'https://46e8-2403-6200-8830-116-212a-ba6f-5f05-9dbd.ngrok.io';
+  static String domain = 'https://b21b-2403-6200-8830-116-812e-8001-8d5b-4cf5.ngrok.io';
   static String routeHome = '/home';
   static String routeAuthen = '/authen';
   static String routeUserPage = '/user';
@@ -22,11 +22,11 @@ class MyConstant {
   ];
 
   static List<Color> colors = [
-    Colors.blue.shade200,
-    Colors.pink.shade200,
-    Colors.blue.shade200,
-    Colors.purple.shade200,
-    Colors.blue.shade200,   
+    Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,
+    Colors.blueAccent.shade700,  
   ];
 
   static List<Image> image = [
@@ -48,6 +48,7 @@ class MyConstant {
   static Color info = Color(0xff32bcf7);
   static Color dark = Color(0xffa3a18c);
   static Color white = Color(0xFFFFFFFF);
+  static Color back = Color(0xFF020202);
 
   //Style
   TextStyle h1() =>
@@ -83,6 +84,15 @@ class MyConstant {
 
   TextStyle h3white() =>
       TextStyle(fontSize: 14, color: white, fontWeight: FontWeight.bold);
+
+  TextStyle h1back() =>
+      TextStyle(fontSize: 24, color: back, fontWeight: FontWeight.bold);
+  TextStyle h1whit24() =>
+      TextStyle(fontSize: 24, color: white, fontWeight: FontWeight.bold);
+  TextStyle h1whit20() =>
+      TextStyle(fontSize: 20, color: white, fontWeight: FontWeight.bold);
+  TextStyle h1whit17() =>
+      TextStyle(fontSize: 17, color: white, fontWeight: FontWeight.bold);
 
 //Button
   ButtonStyle mybuttonStyle() => ElevatedButton.styleFrom(

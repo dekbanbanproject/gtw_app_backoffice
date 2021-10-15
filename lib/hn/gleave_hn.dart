@@ -2,12 +2,14 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:dio/dio.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gtw/hn/gleave_detailhn.dart';
 import 'package:gtw/models/gleave_model.dart';
 import 'package:gtw/models/gleave_model.dart';
 import 'package:gtw/utility/my_constant.dart';
 import 'package:gtw/utility/my_dialog.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GleaveHn extends StatefulWidget {
   const GleaveHn({Key? key}) : super(key: key);
@@ -21,6 +23,7 @@ class _GleaveHnState extends State<GleaveHn> {
   List<GleaveModel> searchgleavemodels = [];
   final debouncer = Debouncer(millisecond: 500);
   bool loadStatus = true;
+  String? personid, positionid, depsubsubid, fullname;
 
   @override
   void initState() {
@@ -29,8 +32,19 @@ class _GleaveHnState extends State<GleaveHn> {
   }
 
   Future<Null> readdatagleave() async {
-    String apireaData = '${MyConstant.domain}/gtw/api/gleavehn.php?isAdd=true';
-    await Dio().get(apireaData).then((value) {
+     SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      fullname = preferences.getString('fullname');
+      personid = preferences.getString('personid');
+      positionid = preferences.getString('positionid');
+      depsubsubid = preferences.getString('depsubsubid');
+      print('###personid ==>>> $personid');
+      print('###positionid ==>>> $positionid');
+      print('###depsubsubid ==>>> $depsubsubid');
+    });
+    String apireaData = 
+    '${MyConstant.domain}/gtw/api/gleavehn.php?isAdd=true&personid=$personid';
+    await Dio().get(apireaData).then((value)async{
       if (value.toString() == 'null') {
         MyDialog().normalDialog(context, 'ไม่มีข้อมูล', 'ไม่มีการร้องขอการลา');
       } else {
@@ -55,6 +69,16 @@ class _GleaveHnState extends State<GleaveHn> {
           : SingleChildScrollView(
               child: Column(
                 children: [
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Text(
+                      'เห็นชอบการลา',
+                      style: TextStyle(
+                          fontSize: 17,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.blueAccent.shade700),
+                    ),
+                  ),
                   builSearch(),
                   buildListView(),
                 ],
@@ -65,7 +89,7 @@ class _GleaveHnState extends State<GleaveHn> {
 
   Container builSearch() {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      margin: EdgeInsets.symmetric(horizontal: 10, vertical: 6),
       child: TextFormField(
         onChanged: (value) {
           debouncer.run(() {
@@ -79,7 +103,7 @@ class _GleaveHnState extends State<GleaveHn> {
           });
         },
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.search),
+          prefixIcon: Icon(Icons.search),labelText: 'ค้นหาชื่อ-นามสกุล',
           border: OutlineInputBorder(),
         ),
       ),
@@ -88,18 +112,48 @@ class _GleaveHnState extends State<GleaveHn> {
 
   ListView buildListView() {
     return ListView.builder(
-      padding: EdgeInsets.symmetric(horizontal: 16),
+      padding: EdgeInsets.symmetric(horizontal: 6),
       shrinkWrap: true,
       physics: const ScrollPhysics(),
       itemCount: searchgleavemodels.length,
       itemBuilder: (context, index) => GestureDetector(
-          onTap: () => Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => GleaveDetail(),
-              )),
+        onTap: () => Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => GleaveDetail(
+                gleaveModel: searchgleavemodels[index],
+              ),
+            )),
+        child: Padding(
+          padding: const EdgeInsets.only(left: 0, right: 0, top: 1, bottom: 1),
           child: Card(
-              child: Text(searchgleavemodels[index].LEAVE_PERSON_FULLNAME))),
+            elevation: 2,
+            child: ListTile(
+              leading: Text(
+                searchgleavemodels[index].LEAVE_PERSON_FULLNAME,
+                style: MyConstant().h3dark(),
+              ),
+              title: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Text(
+                    searchgleavemodels[index].LEAVE_DATE_BEGIN,
+                    style: MyConstant().h3dark(),
+                  ),
+                ],
+              ),
+              trailing: IconButton(
+                onPressed: () {},
+                icon: Icon(
+                  Icons.edit,
+                  size: 24,
+                  color: Colors.orange,
+                ),
+              ),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }

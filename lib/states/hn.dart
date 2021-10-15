@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:gtw/hn/dashboard_hn.dart';
 import 'package:gtw/hn/dev_hn.dart';
@@ -23,30 +24,35 @@ class HnPage extends StatefulWidget {
 class _HnPageState extends State<HnPage> {
   Widget currentWidget = AdvertisePage();
 
-  // List<String>? menus;
-  // List<Color>? colors;
-  // List<Widget> widgets = [    
-  //   const DevbookHn(),
-  //   const GleaveHn(),
-  //   const DevHN(),
-  //   const SuppliesHn(),
-  //   const WhereHouseHn(),
-  // ];
-
 
   @override
   void initState() {
     super.initState();
-    // menus = MyConstant.menus;
-    // colors = MyConstant.colors;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          // backgroundColor: Colors.white,
-          // title: Text('หัวหน้า'),
+          backgroundColor: Colors.orange,
+          // leading: Row(
+          //   children: [
+          //     Padding(
+          //       padding: const EdgeInsets.only(left: 3),
+          //       child: Text(
+          //         'หัวหน้า',
+          //         style: MyConstant().h1whit17(),
+          //       ),
+          //     ),
+          //   ],
+          // ),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              // Text('หัวหน้า'),
+              Text('Ver.641010',style: MyConstant().h1whit17(),),
+            ],
+          ),
         ),
         drawer: Drawer(
           child: Stack(

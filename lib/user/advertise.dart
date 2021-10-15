@@ -75,19 +75,43 @@ class _AdvertisePageState extends State<AdvertisePage> {
                 indexBody = index;
               });
             },
-            child: Card(
-              color: colors![index],
-              child: Padding(
-                padding: const EdgeInsets.only(
-                    left: 20, top: 8, right: 20, bottom: 8),
-                child: Center(
-                  child: Text(menus![index]),
-                ),
-              ),
-            ),
+            // child: indexBody == 0 ? buildCardNo(index): buildCard(index)
+            child: buildCard(index)
           ),
         ),
       ),
     );
+  }
+
+  Padding buildCard(int index) {
+    return Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Card(
+              color: colors![index],
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, top: 8, right: 15, bottom: 8),
+                child: Center(
+                  child: Text(menus![index],style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold),),
+                ),
+              ),
+            ),
+          );
+  }
+
+    Padding buildCardNo(int index) {
+    return Padding(
+            padding: const EdgeInsets.only(top: 5),
+            child: Card(
+              color: Colors.red,
+              child: Padding(
+                padding: const EdgeInsets.only(
+                    left: 15, top: 8, right: 15, bottom: 8),
+                child: Center(
+                  child: Text(menus![index],style: TextStyle(fontSize: 15,color: Colors.white,fontWeight: FontWeight.bold),),
+                ),
+              ),
+            ),
+          );
   }
 }
