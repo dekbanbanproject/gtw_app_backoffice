@@ -1,9 +1,12 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:gtw/models/gleave_model.dart';
 import 'package:gtw/utility/my_constant.dart';
 import 'package:gtw/utility/my_dialog.dart';
 import 'package:gtw/widgets/show_image.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GleaveDetail extends StatefulWidget {
   final GleaveModel gleaveModel;
@@ -16,6 +19,7 @@ class GleaveDetail extends StatefulWidget {
 class _GleaveDetailState extends State<GleaveDetail> {
   GleaveModel? gleaveModel; //ตัวแปรคนละตัวกับข้างบน
   String? id, yearid, status, statusC, typename, idperson, iddebss, sendworkid;
+  String? personid, positionid, depsubsubid, fullname;
 
   @override
   void initState() {
@@ -31,6 +35,38 @@ class _GleaveDetailState extends State<GleaveDetail> {
     typename = gleaveModel!.LEAVE_TYPE_NAME;
     sendworkid = gleaveModel!.LEAVE_WORK_SEND_ID;
     print(status);
+
+    readdatagleave();
+  }
+
+  Future<Null> readdatagleave() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      fullname = preferences.getString('fullname');
+      personid = preferences.getString('personid');
+      positionid = preferences.getString('positionid');
+      depsubsubid = preferences.getString('depsubsubid');
+      print('###personid ==>>> $personid');
+      print('###positionid ==>>> $positionid');
+      print('###depsubsubid ==>>> $depsubsubid');
+    });
+    String apireaData =
+        '${MyConstant.domain}/api/gleavehn.php?isAdd=true&personid=$personid';
+    await Dio().get(apireaData).then((value) async {
+      if (value.toString() == 'null') {
+        MyDialog().normalDialog(context, 'ไม่มีข้อมูล', 'ไม่มีการร้องขอการลา');
+      } else {
+        for (var item in json.decode(value.data)) {
+          GleaveModel model = GleaveModel.fromMap(item);
+          print('### ==>>>${model.LEAVE_PERSON_FULLNAME}');
+
+          setState(() {
+            // gleavemodels.add(model);
+            // searchgleavemodels = gleavemodels;
+          });
+        }
+      }
+    });
   }
 
   @override
@@ -306,12 +342,13 @@ class _GleaveDetailState extends State<GleaveDetail> {
     String id = gleaveModel!.ID;
     print(id);
     String url =
-        '${MyConstant.domain}/gtw/api/gleave_updatehn.php?isAdd=true&ID=$id&LEAVE_YEAR_ID=$yearid&LEAVE_STATUS_CODE=$status&HR_DEPARTMENT_SUB_SUB_ID=$iddebss&LEAVE_WORK_SEND_ID=$sendworkid';
+        '${MyConstant.domain}/api/gleave_updatehn.php?isAdd=true&ID=$id&LEAVE_YEAR_ID=$yearid&LEAVE_STATUS_CODE=$status&HR_DEPARTMENT_SUB_SUB_ID=$iddebss&LEAVE_WORK_SEND_ID=$sendworkid';
 
     await Dio().get(url).then((value) {
       if (value.toString() == 'true') {
         print(value);
         Navigator.pop(context);
+        // readdatagleave();
       } else {
         Navigator.pop(context);
       }
@@ -322,7 +359,7 @@ class _GleaveDetailState extends State<GleaveDetail> {
     String id = gleaveModel!.ID;
     print(id);
     String url =
-        '${MyConstant.domain}/gtw/api/gleave_cancelhn.php?isAdd=true&ID=$id&LEAVE_YEAR_ID=$yearid&LEAVE_STATUS_CODE=$statusC';
+        '${MyConstant.domain}/api/gleave_cancelhn.php?isAdd=true&ID=$id&LEAVE_YEAR_ID=$yearid&LEAVE_STATUS_CODE=$statusC';
     await Dio().get(url).then((value) {
       if (value.toString() == 'true') {
         print(value);

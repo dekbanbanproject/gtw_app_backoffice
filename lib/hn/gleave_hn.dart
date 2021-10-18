@@ -29,11 +29,13 @@ class _GleaveHnState extends State<GleaveHn> {
   void initState() {
     super.initState();
     readdatagleave();
-    
   }
 
   Future<Null> readdatagleave() async {
-     SharedPreferences preferences = await SharedPreferences.getInstance();
+    if (gleavemodels.length != 0) {
+      gleavemodels.clear();
+    } else {}
+    SharedPreferences preferences = await SharedPreferences.getInstance();
     setState(() {
       fullname = preferences.getString('fullname');
       personid = preferences.getString('personid');
@@ -43,9 +45,9 @@ class _GleaveHnState extends State<GleaveHn> {
       print('###positionid ==>>> $positionid');
       print('###depsubsubid ==>>> $depsubsubid');
     });
-    String apireaData = 
-    '${MyConstant.domain}/gtw/api/gleavehn.php?isAdd=true&personid=$personid';
-    await Dio().get(apireaData).then((value)async{
+    String apireaData =
+        '${MyConstant.domain}/api/gleavehn.php?isAdd=true&personid=$personid';
+    await Dio().get(apireaData).then((value) async {
       if (value.toString() == 'null') {
         MyDialog().normalDialog(context, 'ไม่มีข้อมูล', 'ไม่มีการร้องขอการลา');
       } else {
@@ -104,7 +106,8 @@ class _GleaveHnState extends State<GleaveHn> {
           });
         },
         decoration: InputDecoration(
-          prefixIcon: Icon(Icons.search),labelText: 'ค้นหาชื่อ-นามสกุล',
+          prefixIcon: Icon(Icons.search),
+          labelText: 'ค้นหาชื่อ-นามสกุล',
           border: OutlineInputBorder(),
         ),
       ),

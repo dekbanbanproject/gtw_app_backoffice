@@ -3,7 +3,8 @@ import 'package:flutter/material.dart';
 
 class MyConstant {
   static String appName = 'GTW-BACKOffice';
-  static String domain = 'https://a932-2403-6200-8830-116-8e-692d-381d-e3c4.ngrok.io';
+  // static String domain = 'http://27.254.191.157/app/';
+   static String domain = 'https://cdb9-119-42-98-229.ngrok.io/gtw/';
   static String routeHome = '/home';
   static String routeAuthen = '/authen';
   static String routeUserPage = '/user';
