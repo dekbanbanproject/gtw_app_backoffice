@@ -342,7 +342,7 @@ class _GleaveDetailState extends State<GleaveDetail> {
     String id = gleaveModel!.ID;
     print(id);
     String url =
-        '${MyConstant.domain}/api/gleave_updatehn.php?isAdd=true&ID=$id&LEAVE_YEAR_ID=$yearid&LEAVE_STATUS_CODE=$status&HR_DEPARTMENT_SUB_SUB_ID=$iddebss&LEAVE_WORK_SEND_ID=$sendworkid';
+        '${MyConstant.domain}/gtw/api/gleave_updatehn.php?isAdd=true&ID=$id&LEAVE_YEAR_ID=$yearid&LEAVE_STATUS_CODE=$status&HR_DEPARTMENT_SUB_SUB_ID=$iddebss&LEAVE_WORK_SEND_ID=$sendworkid';
 
     await Dio().get(url).then((value) {
       if (value.toString() == 'true') {
@@ -359,7 +359,7 @@ class _GleaveDetailState extends State<GleaveDetail> {
     String id = gleaveModel!.ID;
     print(id);
     String url =
-        '${MyConstant.domain}/api/gleave_cancelhn.php?isAdd=true&ID=$id&LEAVE_YEAR_ID=$yearid&LEAVE_STATUS_CODE=$statusC';
+        '${MyConstant.domain}/gtw/api/gleave_cancelhn.php?isAdd=true&ID=$id&LEAVE_YEAR_ID=$yearid&LEAVE_STATUS_CODE=$statusC';
     await Dio().get(url).then((value) {
       if (value.toString() == 'true') {
         print(value);
