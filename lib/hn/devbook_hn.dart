@@ -22,44 +22,44 @@ class _DevbookHnState extends State<DevbookHn> {
   List<BookIndexModel> searchbookIndexModels = [];
   final debouncer = Debouncer(millisecond: 500);
   bool loadStatus = true;
-  // String? personid, positionid, depsubsubid, fullname;
+  String? personid, positionid, depsubsubid, fullname;
 
   @override
   void initState() {
     super.initState();
-    // readdatabook();
+    readdatabook();
   }
 
-  // Future<Null> readdatabook() async {
-  //   SharedPreferences preferences = await SharedPreferences.getInstance();
-  //   setState(() {
-      // fullname = preferences.getString('fullname');
-      // personid = preferences.getString('personid');
-      // positionid = preferences.getString('positionid');
-      // depsubsubid = preferences.getString('depsubsubid');
-      // print('###personid ==>>> $personid');
-      // print('###positionid ==>>> $positionid');
-      // print('###depsubsubid ==>>> $depsubsubid');
-    // });
+  Future<Null> readdatabook() async {
+    SharedPreferences preferences = await SharedPreferences.getInstance();
+    setState(() {
+      fullname = preferences.getString('fullname');
+      personid = preferences.getString('personid');
+      positionid = preferences.getString('positionid');
+      depsubsubid = preferences.getString('depsubsubid');
+      print('###personid ==>>> $personid');
+      print('###positionid ==>>> $positionid');
+      print('###depsubsubid ==>>> $depsubsubid');
+    });
 
-  //   String apireaData =
-  //       '${MyConstant.domain}/gtw/api/bookindexhn.php?isAdd=true&personid=$personid';
-  //   await Dio().get(apireaData).then((value)async{
-  //     if (value.toString() == "null") {
-  //       MyDialog().normalDialog(context, 'ไม่มีข้อมูล', 'ไม่มีการร้องขอ');
-  //     } else {
-  //       for (var item in json.decode(value.data)) {
-  //         BookIndexModel model = BookIndexModel.fromMap(item);
-  //         print('### ==>>>${model.BOOK_NAME}');
+    String apireaData =
+        '${MyConstant.domain}/gtw/api/bookindexhn.php?isAdd=true&personid=$personid';
+    await Dio().get(apireaData).then((value)async{
+      if (value.toString() == "null") {
+        MyDialog().normalDialog(context, 'ไม่มีข้อมูล', 'ไม่มีการร้องขอ');
+      } else {
+        for (var item in json.decode(value.data)) {
+          BookIndexModel model = BookIndexModel.fromMap(item);
+          print('### ==>>>${model.BOOK_NAME}');
  
-  //         setState(() {
-  //           bookIndexModels.add(model);
-  //           searchbookIndexModels = bookIndexModels;
-  //         });
-  //       }
-  //     }
-  //   });
-  // }
+          setState(() {
+            bookIndexModels.add(model);
+            searchbookIndexModels = bookIndexModels;
+          });
+        }
+      }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -79,8 +79,8 @@ class _DevbookHnState extends State<DevbookHn> {
                           color: Colors.blueAccent.shade700),
                     ),
                   ),
-                  // buildSearch(),
-                  // buildListView(),
+                  buildSearch(),
+                  buildListView(),
                 ],
               ),
             ),

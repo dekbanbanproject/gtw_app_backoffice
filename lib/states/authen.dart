@@ -22,7 +22,31 @@ class _AuthenState extends State<Authen> {
   final formKey = GlobalKey<FormState>();
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  List<InfoOrgModels> info_orgmodels = [];
+  List<Infousers_model> infousermodels = [];
 
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   readdatainfoorg();
+  // }
+  // Future<Null> readdatainfoorg() async {   
+  //   String apireaData = '${MyConstant.domain}/gtw/api/infoorg.php?isAdd=true';
+  //   await Dio().get(apireaData).then((value) async {
+  
+  //       for (var item in json.decode(value.data)) {
+  //         InfoOrgModels model = InfoOrgModels.fromMap(item);
+  //         print('### ==>>>${model.ORG_ID}');
+  //         print('###n ==>>>${model.ORG_NAME}');
+        
+  //         setState(() {
+  //           info_orgmodels.add(model);
+  //         }
+  //         );
+  //     }
+  //   }
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
