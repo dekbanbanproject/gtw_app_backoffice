@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class MyConstant {
   static String appName = 'GTW-BACKOffice';
   // static String domain = 'http://27.254.191.157/app/';
-  static String domain = 'https://ff94-2403-6200-8830-116-139-439b-9281-255a.ngrok.io';
+  static String domain = 'https://5eb5-2403-6200-8830-116-10cf-ab66-48ab-24d8.ngrok.io';
   static String routeHome = '/home';
   static String routeAuthen = '/authen';
   static String routeUserPage = '/user';

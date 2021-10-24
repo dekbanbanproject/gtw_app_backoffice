@@ -6,7 +6,7 @@ import 'package:gtw/models/gleave_model.dart';
 import 'package:gtw/utility/my_constant.dart';
 import 'package:gtw/utility/my_dialog.dart';
 
-import 'gleavedetail.dart';
+
 
 class GleavePage extends StatefulWidget {
 
@@ -143,6 +143,7 @@ class _GleavePageState extends State<GleavePage> {
               ],
             ), 
              //title Column 2
+            // ignore: deprecated_member_use
             trailing: RaisedButton(
               //trailing Column 3
               color: Colors.blueAccent,

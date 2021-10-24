@@ -21,7 +21,7 @@ class _SidebarHNState extends State<SidebarHN>
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     _animationController =
         AnimationController(vsync: this, duration: _animationDuration);
@@ -32,7 +32,7 @@ class _SidebarHNState extends State<SidebarHN>
 
   @override
   void dispose() {
-    // TODO: implement dispose
+
     _animationController.dispose();
     isSidebarOpenedStreamController.close();
     isSidebarOpenedSink.close();

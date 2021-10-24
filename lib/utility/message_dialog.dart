@@ -8,6 +8,7 @@ Future<void> messageDialog(BuildContext context, String message) async {
       children: <Widget>[
         Row(mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            // ignore: deprecated_member_use
             FlatButton(
                 onPressed: () => Navigator.pop(context),
                 child: Text(

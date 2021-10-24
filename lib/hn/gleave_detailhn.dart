@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:gtw/models/gleave_model.dart';
 import 'package:gtw/utility/my_constant.dart';
 import 'package:gtw/utility/my_dialog.dart';
-import 'package:gtw/widgets/show_image.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GleaveDetail extends StatefulWidget {
@@ -254,6 +253,7 @@ class _GleaveDetailState extends State<GleaveDetail> {
         ),
         // content: Text('Succes'),
         actions: [
+          // ignore: deprecated_member_use
           RaisedButton(
             color: Colors.lightBlue,
             onPressed: () {
@@ -268,6 +268,7 @@ class _GleaveDetailState extends State<GleaveDetail> {
                   color: Colors.white),
             ),
           ),
+          // ignore: deprecated_member_use
           RaisedButton(
             color: Colors.red,
             onPressed: () {
@@ -306,6 +307,7 @@ class _GleaveDetailState extends State<GleaveDetail> {
         ),
         // content: Text('Succes'),
         actions: [
+          // ignore: deprecated_member_use
           RaisedButton(
             color: Colors.lightBlue,
             onPressed: () {
@@ -320,6 +322,7 @@ class _GleaveDetailState extends State<GleaveDetail> {
                   color: Colors.white),
             ),
           ),
+          // ignore: deprecated_member_use
           RaisedButton(
             color: Colors.red,
             onPressed: () {

@@ -30,7 +30,7 @@ class _AdvertisePageState extends State<AdvertisePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
+
     super.initState();
     menus = MyConstant.menus;
     colors = MyConstant.colors;
@@ -44,12 +44,7 @@ class _AdvertisePageState extends State<AdvertisePage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // IconButton(
-              //   onPressed: () {
-              //      scaffoldKey.currentState!.openDrawer();
-              //   },
-              //   icon: const Icon(Icons.menu),
-              // ),
+             
               SizedBox(
                 // height: 30,
               ),
