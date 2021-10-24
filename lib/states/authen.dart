@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
+import 'package:gtw/models/infoorg_model.dart';
 import 'package:gtw/models/infousers_model.dart';
 import 'package:gtw/utility/my_constant.dart';
 import 'package:gtw/utility/my_dialog.dart';
@@ -21,6 +22,7 @@ class _AuthenState extends State<Authen> {
   final formKey = GlobalKey<FormState>();
   TextEditingController usernameController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,8 @@ class _AuthenState extends State<Authen> {
       ),
     );
   }
+
+
 
   Row buildsetpass() {
     return Row(
@@ -91,20 +95,17 @@ class _AuthenState extends State<Authen> {
   Future<Null> checkAuthen({String? username, String? password}) async {
     String apiCheckAuthen =
         '${MyConstant.domain}/gtw/api/signin.php?isAdd=true&username=$username';
-    await Dio().get(apiCheckAuthen).then((value)async {
+    await Dio().get(apiCheckAuthen).then((value) async {
       print('## value for API ===> $value');
       if (value.toString() == 'null') {
         MyDialog().normalDialog(
             context, 'ไม่มี $username ในฐานข้อมูล', 'Username ผิด');
       } else {
-        for (var item in json.decode(value.data)) {
-
+        for (var item in json.decode(value.data!)) {
           Infousers_model model = Infousers_model.fromMap(item);
-
           if (password == model.password) {
-            String type = model.type;  
+            String type = model.type;
             print('## value for API ===> $type');
-           
             SharedPreferences preferences =
                 await SharedPreferences.getInstance();
             preferences.setString('type', type);

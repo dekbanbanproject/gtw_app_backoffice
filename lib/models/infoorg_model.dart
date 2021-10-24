@@ -1,30 +1,72 @@
-class InfoorgModel {
-  late String orgid;
-  late String orgname;
+import 'dart:convert';
 
-  late String createdat;
-  late String updatedat;
-  InfoorgModel({
-    required this.orgid,
-    required this.orgname,
+class InfoOrgModels {
+    final String ORG_ID;
+    final String ORG_NAME;
+    // final String img_logo;
 
-    required this.createdat,
-    required this.updatedat,
-  });
-  InfoorgModel.fromJson(Map<String, dynamic> json) {
-    orgid = json['ORG_ID'];
-    orgname = json['ORG_NAME'];    
-    createdat = json['created_at'];
-    updatedat = json['updated_at'];
-  }
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['ORG_ID'] = this.orgid;
-    data['ORG_NAME'] = this.orgname;
+  InfoOrgModels({
+    required this.ORG_ID,
+    required this.ORG_NAME,
+    // required this.img_logo,
    
-    data['created_at'] = this.createdat;
-    data['updated_at'] = this.updatedat;
+  });
+InfoOrgModels copyWith({
+    String? ORG_ID,
+    String? ORG_NAME,
+    // String? img_logo,
+ 
+  }) {
+    return InfoOrgModels(
+      ORG_ID: ORG_ID ?? this.ORG_ID,
+      ORG_NAME: ORG_NAME ?? this.ORG_NAME,
+      // img_logo: img_logo ?? this.img_logo,
+    
+    );
+  }
+  Map<String, dynamic> toMap() {
+    return {
+      'ORG_ID': ORG_ID,
+      'ORG_NAME': ORG_NAME,
+      // 'img_logo': img_logo,
+    
+    };
+  }
+ factory InfoOrgModels.fromMap(Map<String, dynamic> map) {
+    return InfoOrgModels(
+      ORG_ID: map['ORG_ID'] == null ? '' : map['ORG_ID'],
+      ORG_NAME: map['ORG_NAME'] == null ? '' : map['ORG_NAME'],
+      // img_logo: map['img_logo'] == null ? '' : map['img_logo'],
+     
+    );
+  }
 
-    return data;
+  String toJson() => json.encode(toMap());
+
+  factory InfoOrgModels.fromJson(String source) =>
+      InfoOrgModels.fromMap(json.decode(source));
+
+  @override
+  String toString() {
+    return 'InfoOrgModels(ORG_ID:$ORG_ID,ORG_NAME: $ORG_NAME,)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    if (identical(this, other)) return true;
+
+    return other is InfoOrgModels &&
+        other.ORG_ID == ORG_ID &&
+        other.ORG_NAME == ORG_NAME;
+        //  &&
+        // other.img_logo == img_logo;
+  }
+
+  @override
+  int get hashCode {
+    return ORG_ID.hashCode ^
+        ORG_NAME.hashCode;
+        //  ^
+        // img_logo.hashCode;
   }
 }

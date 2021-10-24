@@ -1,8 +1,8 @@
 <?php
     include('config.php');
     
+    
     header("Access-Control-Allow-Origin: *");
-    // $conn = mysqli_connect('27.254.191.157', 'gotowin', 'Fdm^;bog-91','gtw'); 
 
     if (!$conn) {
         echo "Error: Unable to connect to MySQL." . PHP_EOL;
@@ -17,22 +17,15 @@
     if(isset($_GET)){
         if ($_GET['isAdd'] == 'true') {
            
-            $Username = $_GET['username'];		
-            // $Password = $_GET['password'];
+            $org = '1';
 
- 
-
-            $result = mysqli_query($conn,"SELECT * FROM info_users WHERE username = '$Username'");
+            $result = mysqli_query($conn,"SELECT ORG_ID,ORG_NAME FROM info_org");
             if ($result) {
                 while($row=mysqli_fetch_assoc($result)){
                     $output[]=$row;
                 }
-                header('Content-type: application/json');
+                // header('Content-type: application/json');
                 echo json_encode($output);
             }
         } else echo "Wellcome";
     }
-
-		
-    
-
